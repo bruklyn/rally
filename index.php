@@ -1,11 +1,8 @@
 <?php
 // load classes
-function __autoload($className) {
-    $file = "include/".$className.'.php';
-    if(file_exists($file)) {
-        require_once $file;
-    }
-}
+require_once "include/Participant.php";
+require_once "include/Stage.php";
+require_once "include/Trip.php";
 
 // build test data
 $participants = array(
@@ -15,10 +12,10 @@ $participants = array(
     new Participant("Teemu", "Suninen", "Mikko", "Markkula", 9, 3)
     );
 $stages = array(
-  new Stage("Monte Carlo Stage 1", 1, 20.58),
-    new Stage("Monte Carlo Stage 2", 1, 20.78),
-    new Stage("Monte Carlo Stage 3", 3, 19.61),
-    new Stage("Monte Carlo Stage 4", 2, 21.61)
+        new Stage("Monte Carlo Stage 1", 1, 20.58),
+        new Stage("Monte Carlo Stage 2", 1, 20.78),
+        new Stage("Monte Carlo Stage 3", 3, 19.61),
+        new Stage("Monte Carlo Stage 4", 2, 21.61)
 );
 $date = '2021-01-21 10:00:00';
 $dateTime = new DateTime($date);
