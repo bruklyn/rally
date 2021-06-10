@@ -1,5 +1,5 @@
 <?php
-
+// load classes
 function __autoload($className) {
     $file = "include/".$className.'.php';
     if(file_exists($file)) {
@@ -14,14 +14,12 @@ $participants = array(
     new Participant("Gus", "Greensmith", "Cris", "Patterson", 7, 2),
     new Participant("Teemu", "Suninen", "Mikko", "Markkula", 9, 3)
     );
-
 $stages = array(
   new Stage("Monte Carlo Stage 1", 1, 20.58),
     new Stage("Monte Carlo Stage 2", 1, 20.78),
     new Stage("Monte Carlo Stage 3", 3, 19.61),
     new Stage("Monte Carlo Stage 4", 2, 21.61)
 );
-
 $date = '2021-01-21 10:00:00';
 $dateTime = new DateTime($date);
 $timestamp = $dateTime->format('U');
@@ -52,7 +50,7 @@ foreach ($trips as $t){
 }
 */
 
-# sort by stages and by durations
+// sort by stages and by durations
 usort($trips, function ($a, $b){
     if($a->getStage()->getName() == $b->getStage()->getName()){
         return $a->getDuration() - $b->getDuration();
@@ -87,14 +85,14 @@ foreach ($trips as $t){
     </thead>
     <tbody>
     <?php
+    // output data as table row
     $i = 1;
     foreach ($trips as $t){
-
     ?>
     <tr>
         <th scope="row"><?php echo $i ?></th>
         <td><?php echo "{$t->getStage()->getName()} / {$t->getStage()->getDistance()}"?></td>
-        <td><?php echo "{$t->getParticipant()->getTeamNr()}"?></td>
+        <td><?php echo "#{$t->getParticipant()->getTeamNr()}"?></td>
         <td><?php echo "{$t->getParticipant()->getPilotName()} {$t->getParticipant()->getPilotSurname()} / {$t->getParticipant()->getCoPilotName()} {$t->getParticipant()->getCoPilotSurname()}"?></td>
         <td><?php echo "{$t->getDuration()}"?> sek.</td>
     </tr>
